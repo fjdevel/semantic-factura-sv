@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+
+  db:
+    build:
+      context: ./db
+    container_name: semantic_pg
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: semantic_fiscal
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
